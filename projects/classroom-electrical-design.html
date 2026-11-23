@@ -32,7 +32,14 @@
         <li><a href="../index.html#projects" class="active">Projects</a></li>
         <li><a href="../index.html#research">Research</a></li>
         <li><a href="../index.html#experience">Experience</a></li>
-        <li><a href="../index.html#beyond">Beyond Engineering</a></li>
+        <li class="has-menu">
+          <button class="menu-btn" aria-expanded="false" aria-haspopup="true">Interests</button>
+          <ul class="submenu">
+            <li><a href="../interests/travelling.html">Travelling</a></li>
+            <li><a href="../interests/sports.html">Sports</a></li>
+            <li><a href="../interests/movies.html">Movies</a></li>
+          </ul>
+        </li>
         <li><a href="../index.html#contact">Contact</a></li>
       </ul>
     </nav>
@@ -55,7 +62,7 @@
 <section class="p-section" id="overview"><h2>Overview</h2><p>The project covers floor planning, component placement, load calculation and cable scheduling for four classrooms on Level 8, Block A. Two alternative layouts were developed to optimize lighting, fan control, room dimensions, wiring and door placement.</p></section>
 <section class="p-section" id="problem"><h2>Problem statement</h2><p>The existing classrooms had more light fixtures than needed, fans switched in groups of three, unequal room shapes and two doors per room. These choices waste lighting energy, run fans where nobody sits, and let cooled air escape.</p></section>
 <section class="p-section" id="objectives"><h2>Engineering objectives</h2><ul class="dash"><li>Draw the existing electrical layout accurately in AutoCAD.</li><li>Design alternatives that reduce energy use without reducing comfort.</li><li>Calculate loads and prepare a cable schedule.</li></ul></section>
-<section class="p-section" id="architecture"><h2>System architecture</h2><p>Each room is supplied from a distribution board (DB) feeding switchboards (SB), which control tube lights (18 W LED), ceiling fans (75 W) and 3-pin sockets. Design approach 2 adds a full cable schedule (C1, C6, C8, C9) for SB, DB, light, fan and socket connections.</p><figure class="fig"><img src="../assets/img/projects/classroom-design/base-design.png" alt="Base design: the existing layout of rooms 8A-1C to 8A-4C" loading="lazy" style="max-width:860px"><figcaption>Base design: the existing layout of rooms 8A-1C to 8A-4C</figcaption></figure></section>
+<section class="p-section" id="architecture"><h2>System architecture</h2><p>Each room is supplied from a distribution board (DB) feeding switchboards (SB), which control tube lights (18 W LED), ceiling fans (75 W) and 3-pin sockets. Design approach 2 adds a full cable schedule (C1, C6, C8, C9) for SB, DB, light, fan and socket connections.</p><figure class="fig"><img src="../assets/img/projects/classroom-design/base-design.png" alt="Base design: the existing layout of rooms 8A-1C to 8A-4C" loading="lazy" style="max-width:min(100%, 860px)"><figcaption>Base design: the existing layout of rooms 8A-1C to 8A-4C</figcaption></figure></section>
 <section class="p-section" id="methodology"><h2>Methodology</h2><ol class="steps"><li><strong>Measured the rooms</strong> by counting the 1 ft × 1 ft floor tiles.</li><li><strong>Sketched the layout</strong> on paper, marking every light, fan and socket and its switchboard.</li><li><strong>Drew it in AutoCAD</strong> with walls, doors, windows, dimensions and electrical components.</li><li><strong>Designed two alternatives</strong> and calculated the load of each layout.</li></ol></section>
 <section class="p-section" id="hardware-software"><h2>Hardware and software</h2><div class="hw-grid"><div><h3>Hardware</h3><ul class="dash"><li>Electrical components modelled: 18 W LED tube lights, 75 W ceiling fans, 5 A 3-pin sockets, switchboards and distribution board</li></ul></div><div><h3>Software &amp; tools</h3><ul class="dash"><li>AutoCAD (.dwg drawings)</li></ul></div></div></section>
 <section class="p-section" id="photos"><h2>Implementation photographs</h2><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/classroom-design/design-approach-1.png" alt="Design approach 1 (selected): 9 lights per room, individual fan control, one door" loading="lazy"><figcaption>Design approach 1 (selected): 9 lights per room, individual fan control, one door</figcaption></figure><figure class="fig"><img src="../assets/img/projects/classroom-design/design-approach-2.png" alt="Design approach 2: with the cable schedule" loading="lazy"><figcaption>Design approach 2: with the cable schedule</figcaption></figure></div></section>

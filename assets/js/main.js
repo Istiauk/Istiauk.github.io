@@ -1,5 +1,5 @@
 // main.js — small helpers used on every page
-// 1. Mobile menu  2. Highlight the current section in the menu  3. Footer year
+// 1. Mobile menu  1b. Interests dropdown  2. Highlight the current section in the menu  3. Footer year
 
 (function () {
   // 1. Mobile menu: open/close when "Menu" is tapped, close after choosing a link
@@ -19,6 +19,25 @@
       })
     );
   }
+
+  // 1b. Interests dropdown: open/close on click (hover also works on desktop)
+  document.querySelectorAll(".has-menu").forEach((item) => {
+    const btn = item.querySelector(".menu-btn");
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = item.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".has-menu.open").forEach((item) => {
+      item.classList.remove("open");
+      item.querySelector(".menu-btn").setAttribute("aria-expanded", "false");
+    });
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") document.querySelectorAll(".has-menu.open").forEach((i) => i.classList.remove("open"));
+  });
 
   // 2. Home page only: underline the menu item of the section on screen
   const sections = document.querySelectorAll("main section[id]");
