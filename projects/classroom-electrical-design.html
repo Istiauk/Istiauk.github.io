@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electrical Service Design &amp;amp; Energy Optimization of Classrooms | Md Istiauk Hossain Rifat</title>
+  <meta name="description" content="EEE384 project: AutoCAD electrical service layout for four BRAC University classrooms, with an optimized design that halves planned lighting consumption.">
+  <meta name="author" content="Md Istiauk Hossain Rifat">
+  <link rel="canonical" href="https://istiauk.github.io/projects/classroom-electrical-design.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Electrical Service Design &amp;amp; Energy Optimization of Classrooms">
+  <meta property="og:description" content="EEE384 project: AutoCAD electrical service layout for four BRAC University classrooms, with an optimized design that halves planned lighting consumption.">
+  <meta property="og:image" content="https://istiauk.github.io/assets/img/projects/thumbs/classroom-design.jpg">
+  <meta name="theme-color" content="#101C2C">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav">
+    <nav class="container nav-inner" aria-label="Main">
+      <a class="brand" href="../index.html" aria-label="Md Istiauk Hossain Rifat, home">
+        <svg class="brand-mark" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#42C5E8" stroke-width="1.8"/><path d="M7.5 15c2.5-6 5-6 7.5 0s5 6 7.5 0" fill="none" stroke="#fff" stroke-width="1.8"/></svg>
+        <span>Md Istiauk Hossain Rifat</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#expertise">Expertise</a></li>
+        <li><a href="../index.html#projects" class="active">Projects</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#beyond">Beyond Engineering</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="p-hero">
+      <div class="container">
+        <p class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#projects">Projects</a> / Classroom electrical design</p>
+        <h1>Electrical Service Design &amp; Energy Optimization of Classrooms</h1>
+        <p class="lede">An AutoCAD electrical service layout for four BRAC University classrooms (8A-1C to 8A-4C), with two alternative designs compared against the existing one to reduce energy use.</p>
+        <dl class="p-meta"><div><dt>Timeline</dt><dd>Mar 2024 – Apr 2024</dd></div><div><dt>Context</dt><dd>EEE384 Electrical Service Design, BRAC University</dd></div><div><dt>Team</dt><dd>Group 03 (4 members)</dd></div><div><dt>Tools</dt><dd>AutoCAD</dd></div></dl>
+        <div class="p-links"><a class="btn btn-primary" href="https://github.com/Istiauk/Autocad_floorplan" target="_blank" rel="noopener">View drawings on GitHub</a></div>
+      </div>
+    </section>
+
+    <div class="container p-layout">
+      <nav class="toc" aria-label="On this page"><p>On this page</p><a href="#overview">Overview</a><a href="#problem">Problem statement</a><a href="#objectives">Engineering objectives</a><a href="#architecture">System architecture</a><a href="#methodology">Methodology</a><a href="#hardware-software">Hardware and software</a><a href="#photos">Implementation photographs</a><a href="#results">Results</a><a href="#metrics">Performance metrics</a><a href="#findings">Key findings</a><a href="#links">Links</a></nav>
+      <article class="p-body">
+<section class="p-section" id="overview"><h2>Overview</h2><p>The project covers floor planning, component placement, load calculation and cable scheduling for four classrooms on Level 8, Block A. Two alternative layouts were developed to optimize lighting, fan control, room dimensions, wiring and door placement.</p></section>
+<section class="p-section" id="problem"><h2>Problem statement</h2><p>The existing classrooms had more light fixtures than needed, fans switched in groups of three, unequal room shapes and two doors per room. These choices waste lighting energy, run fans where nobody sits, and let cooled air escape.</p></section>
+<section class="p-section" id="objectives"><h2>Engineering objectives</h2><ul class="dash"><li>Draw the existing electrical layout accurately in AutoCAD.</li><li>Design alternatives that reduce energy use without reducing comfort.</li><li>Calculate loads and prepare a cable schedule.</li></ul></section>
+<section class="p-section" id="architecture"><h2>System architecture</h2><p>Each room is supplied from a distribution board (DB) feeding switchboards (SB), which control tube lights (18 W LED), ceiling fans (75 W) and 3-pin sockets. Design approach 2 adds a full cable schedule (C1, C6, C8, C9) for SB, DB, light, fan and socket connections.</p><figure class="fig"><img src="../assets/img/projects/classroom-design/base-design.png" alt="Base design: the existing layout of rooms 8A-1C to 8A-4C" loading="lazy" style="max-width:860px"><figcaption>Base design: the existing layout of rooms 8A-1C to 8A-4C</figcaption></figure></section>
+<section class="p-section" id="methodology"><h2>Methodology</h2><ol class="steps"><li><strong>Measured the rooms</strong> by counting the 1 ft × 1 ft floor tiles.</li><li><strong>Sketched the layout</strong> on paper, marking every light, fan and socket and its switchboard.</li><li><strong>Drew it in AutoCAD</strong> with walls, doors, windows, dimensions and electrical components.</li><li><strong>Designed two alternatives</strong> and calculated the load of each layout.</li></ol></section>
+<section class="p-section" id="hardware-software"><h2>Hardware and software</h2><div class="hw-grid"><div><h3>Hardware</h3><ul class="dash"><li>Electrical components modelled: 18 W LED tube lights, 75 W ceiling fans, 5 A 3-pin sockets, switchboards and distribution board</li></ul></div><div><h3>Software &amp; tools</h3><ul class="dash"><li>AutoCAD (.dwg drawings)</li></ul></div></div></section>
+<section class="p-section" id="photos"><h2>Implementation photographs</h2><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/classroom-design/design-approach-1.png" alt="Design approach 1 (selected): 9 lights per room, individual fan control, one door" loading="lazy"><figcaption>Design approach 1 (selected): 9 lights per room, individual fan control, one door</figcaption></figure><figure class="fig"><img src="../assets/img/projects/classroom-design/design-approach-2.png" alt="Design approach 2: with the cable schedule" loading="lazy"><figcaption>Design approach 2: with the cable schedule</figcaption></figure></div></section>
+<section class="p-section" id="results"><h2>Results</h2><div class="table-wrap"><table><thead><tr><th class=""></th><th class="">Base design</th><th class="">Design approach 1 (selected)</th><th class="">Design approach 2</th></tr></thead><tbody><tr><td class="">Tube lights per room</td><td class="">18</td><td class="">9</td><td class="">18</td></tr><tr><td class="">Fan control</td><td class="">3 fans per switch</td><td class="">Individual</td><td class="">Individual</td></tr><tr><td class="">Room shape</td><td class="">Unequal</td><td class="">Square, equal</td><td class="">As base</td></tr><tr><td class="">Doors per room</td><td class="">2</td><td class="">1</td><td class="">2</td></tr><tr><td class="">Cable schedule</td><td class="">–</td><td class="">–</td><td class="">Drawn (C1–C9)</td></tr></tbody></table></div></section>
+<section class="p-section" id="metrics"><h2>Performance metrics</h2><div class="metrics"><div class="metric"><div class="num">50%</div><div class="lbl">Reduction in planned lighting energy</div></div><div class="metric"><div class="num">10,368 W → 5,184 W</div><div class="lbl">Planned lighting consumption, base vs selected design</div></div><div class="metric"><div class="num">4</div><div class="lbl">Classrooms designed</div></div></div></section>
+<section class="p-section" id="findings"><h2>Key findings</h2><ul class="dash"><li>Removing unnecessary fixtures halved the planned lighting consumption and made better use of daylight from the windows.</li><li>Individual fan switches let fans run only where they are needed, which saves energy that the connected-load figure does not show.</li><li>Square, symmetrical rooms with one door use space better and keep cooled air in, helping the HVAC system work more efficiently.</li></ul></section>
+<section class="p-section" id="links"><h2>Links</h2><ul class="dash"><li><a href="https://github.com/Istiauk/Autocad_floorplan" target="_blank" rel="noopener">GitHub repository</a> (AutoCAD drawings, figures and full report)</li></ul></section>
+
+        <nav class="p-nav" aria-label="More projects"><a class="prev" href="digital-alarm-clock-vlsi.html"><span>Previous project</span><strong>Digital alarm clock (VLSI)</strong></a><a class="next" href="satellite-training-kit.html"><span>Next project</span><strong>Satellite training kit</strong></a></nav>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span id="year">2026</span> Md Istiauk Hossain Rifat</span>
+      <span><a href="../index.html#projects">All projects</a> · <a href="../index.html#contact">Contact</a></span>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

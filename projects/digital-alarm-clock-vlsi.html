@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Alarm Clock: From Verilog to Layout | Md Istiauk Hossain Rifat</title>
+  <meta name="description" content="EEE411L VLSI project: 24-hour digital alarm clock in Verilog HDL, verified by testbench, synthesized with slow and fast libraries in Cadence, and laid out with zero DRC violations.">
+  <meta name="author" content="Md Istiauk Hossain Rifat">
+  <link rel="canonical" href="https://istiauk.github.io/projects/digital-alarm-clock-vlsi.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Digital Alarm Clock: From Verilog to Layout">
+  <meta property="og:description" content="EEE411L VLSI project: 24-hour digital alarm clock in Verilog HDL, verified by testbench, synthesized with slow and fast libraries in Cadence, and laid out with zero DRC violations.">
+  <meta property="og:image" content="https://istiauk.github.io/assets/img/projects/thumbs/alarm-clock.jpg">
+  <meta name="theme-color" content="#101C2C">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav">
+    <nav class="container nav-inner" aria-label="Main">
+      <a class="brand" href="../index.html" aria-label="Md Istiauk Hossain Rifat, home">
+        <svg class="brand-mark" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#42C5E8" stroke-width="1.8"/><path d="M7.5 15c2.5-6 5-6 7.5 0s5 6 7.5 0" fill="none" stroke="#fff" stroke-width="1.8"/></svg>
+        <span>Md Istiauk Hossain Rifat</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#expertise">Expertise</a></li>
+        <li><a href="../index.html#projects" class="active">Projects</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#beyond">Beyond Engineering</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="p-hero">
+      <div class="container">
+        <p class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#projects">Projects</a> / Digital alarm clock (VLSI)</p>
+        <h1>Digital Alarm Clock: From Verilog to Layout</h1>
+        <p class="lede">A 24-hour digital alarm clock designed in Verilog HDL and taken through the digital design flow in Cadence: testbench verification, RTL synthesis with two libraries, and physical layout with clean DRC and connectivity checks.</p>
+        <dl class="p-meta"><div><dt>Timeline</dt><dd>Mar 2024 – May 2024</dd></div><div><dt>Context</dt><dd>EEE411L VLSI Design Lab, BRAC University</dd></div><div><dt>Team</dt><dd>Group 4 (4 members)</dd></div><div><dt>Tools</dt><dd>Verilog HDL, Cadence</dd></div></dl>
+        <div class="p-links"><span class="btn btn-ghost" aria-disabled="true">GitHub repository coming soon</span></div>
+      </div>
+    </section>
+
+    <div class="container p-layout">
+      <nav class="toc" aria-label="On this page"><p>On this page</p><a href="#overview">Overview</a><a href="#problem">Problem statement</a><a href="#objectives">Engineering objectives</a><a href="#architecture">System architecture</a><a href="#methodology">Methodology</a><a href="#hardware-software">Hardware and software</a><a href="#photos">Implementation photographs</a><a href="#results">Results</a><a href="#metrics">Performance metrics</a><a href="#findings">Key findings</a><a href="#links">Links</a></nav>
+      <article class="p-body">
+<section class="p-section" id="overview"><h2>Overview</h2><p>The clock counts seconds, minutes and hours, can be reset to a chosen time, and raises an alarm flag for one minute when the current time matches a preset alarm time. The design was written in Verilog, checked with a testbench, synthesized and laid out.</p></section>
+<section class="p-section" id="problem"><h2>Problem statement</h2><p>The goal was to practise the full digital IC flow on a design small enough to verify completely: writing correct sequential logic, proving it with simulation, and checking that the synthesized and placed design meets timing and design rules.</p></section>
+<section class="p-section" id="objectives"><h2>Engineering objectives</h2><ul class="dash"><li>Create a Verilog alarm clock with hour, minute and second outputs.</li><li>Reset the clock to a specified hour and minute on a reset signal, and trigger an alarm when the time matches the preset alarm.</li><li>Verify the design with a testbench and waveforms in Cadence.</li><li>Run RTL synthesis with slow and fast libraries and produce power, area and gate reports, then complete the layout.</li></ul></section>
+<section class="p-section" id="architecture"><h2>System architecture</h2><p>The <code>Clock</code> module has six inputs and four outputs. Minutes and seconds need 6 bits (up to 59) and hours need 5 bits (up to 23). Three registers hold the current time and a fourth holds the alarm state; all update on the rising edge of <code>clk</code> or <code>rst</code>.</p><div class="table-wrap"><table><thead><tr><th class="">Port</th><th class="">Direction</th><th class="">Width</th><th class="">Purpose</th></tr></thead><tbody><tr><td class="">clk</td><td class="">Input</td><td class="">1</td><td class="">Clock; each rising edge advances one second</td></tr><tr><td class="">rst</td><td class="">Input</td><td class="">1</td><td class="">Reset to the preset hour and minute</td></tr><tr><td class="">reset_min / reset_hour</td><td class="">Input</td><td class="">6 / 5</td><td class="">Time loaded on reset</td></tr><tr><td class="">alarm_min / alarm_hour</td><td class="">Input</td><td class="">6 / 5</td><td class="">Alarm time</td></tr><tr><td class="">sec / min / hour</td><td class="">Output</td><td class="">6 / 6 / 5</td><td class="">Current time</td></tr><tr><td class="">alarm_flag</td><td class="">Output</td><td class="">1</td><td class="">High for one minute when the time matches the alarm</td></tr></tbody></table></div></section>
+<section class="p-section" id="methodology"><h2>Methodology</h2><ol class="steps"><li><strong>RTL design:</strong> wrote the counter and alarm logic in Verilog HDL.</li><li><strong>Verification:</strong> a testbench generated a 10 ns clock (each period standing for one second), applied a reset to 14:42 and set the alarm to 14:45, and the waveforms were checked.</li><li><strong>Constraints:</strong> clock period 10, rise/fall transition and uncertainty 0.1, and maximum input and output delays of 1.0 relative to the clock.</li><li><strong>RTL synthesis:</strong> synthesized in Cadence with the slow (worst-case) and fast (best-case) tsmc18 libraries and generated power, area, gate-count and DFT reports.</li><li><strong>Layout:</strong> placed and routed the design, then ran timing, DRC and connectivity verification.</li></ol></section>
+<section class="p-section" id="hardware-software"><h2>Hardware and software</h2><div class="hw-grid"><div><h3>Hardware</h3><ul class="dash"><li>None. Digital IC design flow.</li></ul></div><div><h3>Software &amp; tools</h3><ul class="dash"><li>Verilog HDL</li><li>Cadence simulation and RTL synthesis tools</li><li>Cadence layout and verification tools</li><li>tsmc18 standard-cell libraries (slow.lib, fast.lib)</li></ul></div></div></section>
+<section class="p-section" id="photos"><h2>Implementation photographs</h2><figure class="fig"><img src="../assets/img/projects/alarm-clock/layout.png" alt="Placed and routed layout of the alarm clock" loading="lazy" style="max-width:560px"><figcaption>Placed and routed layout of the alarm clock</figcaption></figure></section>
+<section class="p-section" id="results"><h2>Results</h2><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/alarm-clock/timing-reset.png" alt="Reset at 100 ns loads 14:42 and clears seconds" loading="lazy"><figcaption>Reset at 100 ns loads 14:42 and clears seconds</figcaption></figure><figure class="fig"><img src="../assets/img/projects/alarm-clock/timing-alarm.png" alt="Alarm flag high from about 2000 ns to 2600 ns (one simulated minute)" loading="lazy"><figcaption>Alarm flag high from about 2000 ns to 2600 ns (one simulated minute)</figcaption></figure></div><figure class="fig"><img src="../assets/img/projects/alarm-clock/schematic-slow.png" alt="Synthesized schematic (slow library)" loading="lazy" style="max-width:760px"><figcaption>Synthesized schematic (slow library)</figcaption></figure><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/alarm-clock/drc.png" alt="Route and DRC report: zero violations" loading="lazy"><figcaption>Route and DRC report: zero violations</figcaption></figure><figure class="fig"><img src="../assets/img/projects/alarm-clock/connectivity.png" alt="Connectivity verification: 0 violations, 0 warnings" loading="lazy"><figcaption>Connectivity verification: 0 violations, 0 warnings</figcaption></figure></div></section>
+<section class="p-section" id="metrics"><h2>Performance metrics</h2><div class="table-wrap"><table><thead><tr><th class="">Synthesis result</th><th class="num">slow.lib</th><th class="num">fast.lib</th></tr></thead><tbody><tr><td class="">Cells</td><td class="num">110</td><td class="num">111</td></tr><tr><td class="">Total cell area</td><td class="num">2804.155</td><td class="num">2810.808</td></tr><tr><td class="">Leakage power (nW)</td><td class="num">87,210.108</td><td class="num">67,003.461</td></tr><tr><td class="">Internal power (nW)</td><td class="num">93,381.764</td><td class="num">380,555.031</td></tr><tr><td class="">Net power (nW)</td><td class="num">72,436.858</td><td class="num">112,589.092</td></tr><tr><td class="">Switching power (nW)</td><td class="num">165,818.622</td><td class="num">493,144.123</td></tr><tr><td class="">DFT violations</td><td class="num">0</td><td class="num">0</td></tr></tbody></table></div><div class="metrics"><div class="metric"><div class="num">0</div><div class="lbl">DRC violations after routing</div></div><div class="metric"><div class="num">0</div><div class="lbl">Connectivity violations or warnings</div></div><div class="metric"><div class="num">7.656 ns</div><div class="lbl">Worst setup slack (positive, so timing is met)</div></div><div class="metric"><div class="num">63.77%</div><div class="lbl">Placement density</div></div></div></section>
+<section class="p-section" id="findings"><h2>Key findings</h2><ul class="dash"><li>The testbench confirmed the reset and alarm behaviour: the alarm flag stayed high for exactly one simulated minute and cleared at 14:46.</li><li>The fast library produced higher internal and switching power but lower leakage than the slow library, with almost the same cell count and area.</li><li>The final layout passed DRC and connectivity checks with no violations, meaning it met the design rules for fabrication.</li></ul></section>
+<section class="p-section" id="links"><h2>Links</h2><p class="placeholder-note">A GitHub repository for this project is being prepared. Until then, the full project report is available on request.</p></section>
+
+        <nav class="p-nav" aria-label="More projects"><a class="prev" href="rc-circuit-modelling.html"><span>Previous project</span><strong>RC circuit modelling</strong></a><a class="next" href="classroom-electrical-design.html"><span>Next project</span><strong>Classroom electrical design</strong></a></nav>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span id="year">2026</span> Md Istiauk Hossain Rifat</span>
+      <span><a href="../index.html#projects">All projects</a> · <a href="../index.html#contact">Contact</a></span>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

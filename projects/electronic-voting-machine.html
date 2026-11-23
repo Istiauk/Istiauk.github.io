@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electronic Voting Machine Using ATmega32 | Md Istiauk Hossain Rifat</title>
+  <meta name="description" content="Microcontroller-based electronic voting machine on the ATmega32, simulated in Proteus with interrupt, push-button and keypad input designs.">
+  <meta name="author" content="Md Istiauk Hossain Rifat">
+  <link rel="canonical" href="https://istiauk.github.io/projects/electronic-voting-machine.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Electronic Voting Machine Using ATmega32">
+  <meta property="og:description" content="Microcontroller-based electronic voting machine on the ATmega32, simulated in Proteus with interrupt, push-button and keypad input designs.">
+  <meta property="og:image" content="https://istiauk.github.io/assets/img/projects/thumbs/evm.jpg">
+  <meta name="theme-color" content="#101C2C">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav">
+    <nav class="container nav-inner" aria-label="Main">
+      <a class="brand" href="../index.html" aria-label="Md Istiauk Hossain Rifat, home">
+        <svg class="brand-mark" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#42C5E8" stroke-width="1.8"/><path d="M7.5 15c2.5-6 5-6 7.5 0s5 6 7.5 0" fill="none" stroke="#fff" stroke-width="1.8"/></svg>
+        <span>Md Istiauk Hossain Rifat</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#expertise">Expertise</a></li>
+        <li><a href="../index.html#projects" class="active">Projects</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#beyond">Beyond Engineering</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="p-hero">
+      <div class="container">
+        <p class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#projects">Projects</a> / Electronic voting machine</p>
+        <h1>Electronic Voting Machine Using ATmega32</h1>
+        <p class="lede">A microcontroller-based voting system on the ATmega32 that records votes, shows a summary and identifies the leading candidate, developed in three input designs and simulated in Proteus.</p>
+        <dl class="p-meta"><div><dt>Timeline</dt><dd>Apr 2024 – May 2024</dd></div><div><dt>Context</dt><dd>Academic project</dd></div><div><dt>Platform</dt><dd>ATmega32</dd></div><div><dt>Tools</dt><dd>C, CodeVisionAVR, Proteus 8</dd></div></dl>
+        <div class="p-links"><a class="btn btn-primary" href="https://github.com/Istiauk/EVM_ATmega32" target="_blank" rel="noopener">View code on GitHub</a></div>
+      </div>
+    </section>
+
+    <div class="container p-layout">
+      <nav class="toc" aria-label="On this page"><p>On this page</p><a href="#overview">Overview</a><a href="#problem">Problem statement</a><a href="#objectives">Engineering objectives</a><a href="#architecture">System architecture</a><a href="#methodology">Methodology</a><a href="#hardware-software">Hardware and software</a><a href="#photos">Implementation photographs</a><a href="#results">Results</a><a href="#metrics">Performance metrics</a><a href="#findings">Key findings</a><a href="#links">Links</a></nav>
+      <article class="p-body">
+<section class="p-section" id="overview"><h2>Overview</h2><p>This project implements an electronic voting machine (EVM) on the ATmega32 microcontroller. It securely collects votes for three candidates, displays results on an LCD and determines the leading candidate. Three design approaches were developed and compared to find the most efficient and user-friendly one.</p></section>
+<section class="p-section" id="problem"><h2>Problem statement</h2><p>A voting machine must count every vote correctly, prevent accidental or repeated inputs, and be simple to use. The input method (interrupts, push buttons or a keypad) affects reliability and usability, so the project compares all three on the same hardware platform.</p></section>
+<section class="p-section" id="objectives"><h2>Engineering objectives</h2><ul class="dash"><li>Design a microcontroller-based voting system with vote casting, counting and result display.</li><li>Implement and compare interrupt-driven, push-button and keypad-based input modes.</li><li>Apply tamper-resistant design principles in the control logic.</li><li>Verify the complete system in Proteus simulation.</li></ul></section>
+<section class="p-section" id="architecture"><h2>System architecture</h2><p>The ATmega32 reads voter input, updates a counter for each candidate and drives a 16×2 LCD that confirms each vote. A summary routine displays total votes and each candidate's count, and an LED indicator gives status feedback.</p><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/evm/interrupt-model.png" alt="Design 1: interrupt-based input" loading="lazy"><figcaption>Design 1: interrupt-based input</figcaption></figure><figure class="fig"><img src="../assets/img/projects/evm/push-button-model.png" alt="Design 2: push-button input" loading="lazy"><figcaption>Design 2: push-button input</figcaption></figure></div></section>
+<section class="p-section" id="methodology"><h2>Methodology</h2><ol class="steps"><li>Designed the circuit around the ATmega32 with a 16×2 LCD, input devices and an LED in Proteus 8.</li><li>Wrote the firmware in C (CodeVisionAVR) for each design: vote casting, per-candidate counting, total-vote summary and leading-candidate logic.</li><li>Built three versions: interrupt-based, push-button and keypad-based (4×4 keypad).</li><li>Simulated each design in Proteus and compared them for efficiency and ease of use.</li></ol></section>
+<section class="p-section" id="hardware-software"><h2>Hardware and software</h2><div class="hw-grid"><div><h3>Hardware</h3><ul class="dash"><li>ATmega32 microcontroller</li><li>16×2 LCD</li><li>4×4 keypad / push buttons</li><li>LED indicator</li></ul></div><div><h3>Software &amp; tools</h3><ul class="dash"><li>C (CodeVisionAVR)</li><li>Proteus 8 circuit simulation</li><li>HEX files for programming</li></ul></div></div></section>
+<section class="p-section" id="photos"><h2>Implementation photographs</h2><p class="placeholder-note">This project was completed in simulation, so there are no physical build photographs. The Proteus schematics are shown above. A screenshot of the keypad design will be added once it is exported from the Proteus project.</p></section>
+<section class="p-section" id="results"><h2>Results</h2><p>All three designs were simulated successfully in Proteus with complete vote casting, counting and result display. The <strong>keypad-based design</strong> was selected as the best of the three for efficiency and ease of use.</p></section>
+<section class="p-section" id="metrics"><h2>Performance metrics</h2><p class="placeholder-note">No quantitative performance measurements were recorded for this simulation-based project.</p></section>
+<section class="p-section" id="findings"><h2>Key findings</h2><ul class="dash"><li>The keypad-based design gave the most efficient and user-friendly voting process.</li><li>Comparing three input methods on the same microcontroller made the trade-offs between interrupts, polling buttons and keypad scanning clear.</li></ul></section>
+<section class="p-section" id="links"><h2>Links</h2><ul class="dash"><li><a href="https://github.com/Istiauk/EVM_ATmega32" target="_blank" rel="noopener">GitHub repository</a> (C source, Proteus files and HEX files for all three designs)</li></ul></section>
+
+        <nav class="p-nav" aria-label="More projects"><a class="prev" href="wind-prediction.html"><span>Previous project</span><strong>Wind speed & direction prediction</strong></a><a class="next" href="rc-circuit-modelling.html"><span>Next project</span><strong>RC circuit modelling</strong></a></nav>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span id="year">2026</span> Md Istiauk Hossain Rifat</span>
+      <span><a href="../index.html#projects">All projects</a> · <a href="../index.html#contact">Contact</a></span>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

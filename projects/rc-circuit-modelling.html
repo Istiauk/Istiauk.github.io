@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RC Circuit Modelling and Numerical Simulation | Md Istiauk Hossain Rifat</title>
+  <meta name="description" content="EEE382 project: numerical differentiation, transfer-function and state-space modelling, and RK4 integration of RC circuits in MATLAB/Simulink.">
+  <meta name="author" content="Md Istiauk Hossain Rifat">
+  <link rel="canonical" href="https://istiauk.github.io/projects/rc-circuit-modelling.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RC Circuit Modelling and Numerical Simulation">
+  <meta property="og:description" content="EEE382 project: numerical differentiation, transfer-function and state-space modelling, and RK4 integration of RC circuits in MATLAB/Simulink.">
+  <meta property="og:image" content="https://istiauk.github.io/assets/img/projects/thumbs/rc-circuit.jpg">
+  <meta name="theme-color" content="#101C2C">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav">
+    <nav class="container nav-inner" aria-label="Main">
+      <a class="brand" href="../index.html" aria-label="Md Istiauk Hossain Rifat, home">
+        <svg class="brand-mark" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#42C5E8" stroke-width="1.8"/><path d="M7.5 15c2.5-6 5-6 7.5 0s5 6 7.5 0" fill="none" stroke="#fff" stroke-width="1.8"/></svg>
+        <span>Md Istiauk Hossain Rifat</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#expertise">Expertise</a></li>
+        <li><a href="../index.html#projects" class="active">Projects</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#beyond">Beyond Engineering</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="p-hero">
+      <div class="container">
+        <p class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#projects">Projects</a> / RC circuit modelling</p>
+        <h1>RC Circuit Modelling and Numerical Simulation</h1>
+        <p class="lede">Three MATLAB/Simulink problems built around the capacitor law I<sub>C</sub> = C·dV<sub>C</sub>/dt: numerical differentiation and curve fitting, transfer-function and state-space models, and fourth-order Runge–Kutta integration.</p>
+        <dl class="p-meta"><div><dt>Timeline</dt><dd>Apr 2024 – May 2024</dd></div><div><dt>Context</dt><dd>EEE382 Modelling &amp; Simulation, BRAC University</dd></div><div><dt>Team</dt><dd>Group 08 (4 members)</dd></div><div><dt>Tools</dt><dd>MATLAB, Simulink</dd></div></dl>
+        <div class="p-links"><a class="btn btn-primary" href="https://github.com/Istiauk/rc-circuit-model-numerical-simulation" target="_blank" rel="noopener">View code on GitHub</a></div>
+      </div>
+    </section>
+
+    <div class="container p-layout">
+      <nav class="toc" aria-label="On this page"><p>On this page</p><a href="#overview">Overview</a><a href="#problem">Problem statement</a><a href="#objectives">Engineering objectives</a><a href="#architecture">System architecture</a><a href="#methodology">Methodology</a><a href="#hardware-software">Hardware and software</a><a href="#photos">Implementation photographs</a><a href="#results">Results</a><a href="#metrics">Performance metrics</a><a href="#findings">Key findings</a><a href="#links">Links</a></nav>
+      <article class="p-body">
+<section class="p-section" id="overview"><h2>Overview</h2><p>The capacitor law is <strong>differentiated</strong> in Problem 1, <strong>embedded in the circuit equations</strong> in Problem 2, and <strong>integrated</strong> in Problem 3. Together they cover the main numerical and modelling tools used to analyse dynamic circuits.</p></section>
+<section class="p-section" id="problem"><h2>Problem statement</h2><p>Real circuit data is often sampled, and circuit behaviour can be described in several equivalent ways. The project asks how accurately numerical methods recover current and voltage from samples, and whether different model forms of the same circuit give the same response.</p></section>
+<section class="p-section" id="objectives"><h2>Engineering objectives</h2><ul class="dash"><li>Estimate capacitor current from sampled voltage and quantify the error.</li><li>Model a two-stage RC ladder as a Simulink circuit, a transfer function and a state-space system, and check that they agree.</li><li>Compute capacitor voltage from a known current with the RK4 method.</li></ul></section>
+<section class="p-section" id="architecture"><h2>System architecture</h2><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/rc-circuit/series-rc.png" alt="Problem 1: series RC circuit" loading="lazy" style="max-width:260px"><figcaption>Problem 1: series RC circuit</figcaption></figure><figure class="fig"><img src="../assets/img/projects/rc-circuit/two-stage-rc.png" alt="Problem 2: two-stage RC ladder (R₁ = 500 Ω, R₂ = 700 Ω, C₁ = 1 µF, C₂ = 47 µF)" loading="lazy"><figcaption>Problem 2: two-stage RC ladder (R₁ = 500 Ω, R₂ = 700 Ω, C₁ = 1 µF, C₂ = 47 µF)</figcaption></figure></div><figure class="fig"><img src="../assets/img/projects/rc-circuit/simulink-circuit.png" alt="Simulink circuit built from electrical blocks" loading="lazy" style="max-width:760px"><figcaption>Simulink circuit built from electrical blocks</figcaption></figure></section>
+<section class="p-section" id="methodology"><h2>Methodology</h2><ol class="steps"><li><strong>Problem 1:</strong> estimated capacitor current with the forward difference I<sub>C</sub> ≈ C·ΔV/h from samples every 0.5 ms, computed the relative true error, then fitted a third-order polynomial and evaluated it at 4 ms.</li><li><strong>Problem 2:</strong> derived the transfer function with KCL, G(s) = 1 / (1.645×10⁻⁵ s² + 0.0569 s + 1), converted it to state space with <code>tf2ss</code>, and compared Simulink LTI and State-Space blocks driven by the same step.</li><li><strong>Problem 3:</strong> solved dV<sub>C</sub>/dt = I<sub>C</sub>(t)/C with I<sub>C</sub> = 150·e<sup>−0.5t</sup> from 0 to 3 s using RK4 with a 0.5 s step, and compared it with the reference values.</li></ol></section>
+<section class="p-section" id="hardware-software"><h2>Hardware and software</h2><div class="hw-grid"><div><h3>Hardware</h3><ul class="dash"><li>None. Simulation-only project.</li></ul></div><div><h3>Software &amp; tools</h3><ul class="dash"><li>MATLAB (Control System and Signal Processing toolboxes)</li><li>Simulink</li></ul></div></div></section>
+<section class="p-section" id="photos"><h2>Implementation photographs</h2><p class="placeholder-note">This is a simulation project, so there are no hardware photographs. MATLAB and Simulink outputs are shown under Results.</p></section>
+<section class="p-section" id="results"><h2>Results</h2><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/rc-circuit/approx-vs-true-current.png" alt="Problem 1: approximated vs true current" loading="lazy"><figcaption>Problem 1: approximated vs true current</figcaption></figure><figure class="fig"><img src="../assets/img/projects/rc-circuit/cubic-fit.png" alt="Problem 1: cubic curve fit" loading="lazy"><figcaption>Problem 1: cubic curve fit</figcaption></figure></div><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/rc-circuit/simulink-lti-vs-ss.png" alt="Problem 2: LTI vs State-Space comparison model" loading="lazy"><figcaption>Problem 2: LTI vs State-Space comparison model</figcaption></figure><figure class="fig"><img src="../assets/img/projects/rc-circuit/lti-vs-ss-overlay.png" alt="Problem 2: the two responses coincide" loading="lazy"><figcaption>Problem 2: the two responses coincide</figcaption></figure></div><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/rc-circuit/rk4-voltage.png" alt="Problem 3: RK4 capacitor voltage" loading="lazy"><figcaption>Problem 3: RK4 capacitor voltage</figcaption></figure><figure class="fig"><img src="../assets/img/projects/rc-circuit/rk4-vs-true.png" alt="Problem 3: calculated vs reference voltage" loading="lazy"><figcaption>Problem 3: calculated vs reference voltage</figcaption></figure></div></section>
+<section class="p-section" id="metrics"><h2>Performance metrics</h2><div class="metrics"><div class="metric"><div class="num">2.09%</div><div class="lbl">Relative error of the cubic fit at the evaluation point (4 ms)</div></div><div class="metric"><div class="num">0.4916 V</div><div class="lbl">Deviation between calculated and reference capacitor voltage (t = 0.5 s)</div></div><div class="metric"><div class="num">≈ 56.6 ms</div><div class="lbl">Dominant time constant of the two-stage RC ladder</div></div></div></section>
+<section class="p-section" id="findings"><h2>Key findings</h2><ul class="dash"><li>The transfer-function and state-space models gave matching step responses, rising to 1 with no overshoot; the slow pole near −17.66 s⁻¹ dominates.</li><li>The forward-difference current had a relative error of about 4–5% at most sample points.</li><li>The RK4 result matched the closed-form solution very closely; the gap to the supplied reference table was a constant factor, which pointed to inconsistent given data rather than a numerical error.</li></ul></section>
+<section class="p-section" id="links"><h2>Links</h2><ul class="dash"><li><a href="https://github.com/Istiauk/rc-circuit-model-numerical-simulation" target="_blank" rel="noopener">GitHub repository</a> (MATLAB code, figures and full report)</li></ul></section>
+
+        <nav class="p-nav" aria-label="More projects"><a class="prev" href="electronic-voting-machine.html"><span>Previous project</span><strong>Electronic voting machine</strong></a><a class="next" href="digital-alarm-clock-vlsi.html"><span>Next project</span><strong>Digital alarm clock (VLSI)</strong></a></nav>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span id="year">2026</span> Md Istiauk Hossain Rifat</span>
+      <span><a href="../index.html#projects">All projects</a> · <a href="../index.html#contact">Contact</a></span>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

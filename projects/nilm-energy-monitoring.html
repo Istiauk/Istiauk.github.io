@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Real-Time Energy Monitoring for the Textile Industry Using NILM | Md Istiauk Hossain Rifat</title>
+  <meta name="description" content="Final-year design project: real-time non-intrusive load monitoring of identical induction motors with custom sensing hardware and a fine-tuned MATNILM deep-learning model.">
+  <meta name="author" content="Md Istiauk Hossain Rifat">
+  <link rel="canonical" href="https://istiauk.github.io/projects/nilm-energy-monitoring.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Real-Time Energy Monitoring for the Textile Industry Using NILM">
+  <meta property="og:description" content="Final-year design project: real-time non-intrusive load monitoring of identical induction motors with custom sensing hardware and a fine-tuned MATNILM deep-learning model.">
+  <meta property="og:image" content="https://istiauk.github.io/assets/img/projects/thumbs/nilm.jpg">
+  <meta name="theme-color" content="#101C2C">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav">
+    <nav class="container nav-inner" aria-label="Main">
+      <a class="brand" href="../index.html" aria-label="Md Istiauk Hossain Rifat, home">
+        <svg class="brand-mark" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#42C5E8" stroke-width="1.8"/><path d="M7.5 15c2.5-6 5-6 7.5 0s5 6 7.5 0" fill="none" stroke="#fff" stroke-width="1.8"/></svg>
+        <span>Md Istiauk Hossain Rifat</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#expertise">Expertise</a></li>
+        <li><a href="../index.html#projects" class="active">Projects</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#beyond">Beyond Engineering</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="p-hero">
+      <div class="container">
+        <p class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#projects">Projects</a> / NILM energy monitoring</p>
+        <h1>Real-Time Energy Monitoring for the Textile Industry Using NILM</h1>
+        <p class="lede">A real-time non-intrusive load monitoring (NILM) system that estimates the power of individual induction motors, standing in for textile cutting machines, from a single measurement point. It combines custom sensing hardware, a new 180,631-sample dataset and a fine-tuned deep-learning model.</p>
+        <dl class="p-meta"><div><dt>Timeline</dt><dd>Jul 2024 – May 2025</dd></div><div><dt>Context</dt><dd>Final-year design project, BRAC University</dd></div><div><dt>My role</dt><dd>Project lead</dd></div><div><dt>Output</dt><dd>arXiv preprint 2601.01616</dd></div></dl>
+        <div class="p-links"><a class="btn btn-primary" href="https://github.com/Istiauk/FYDP_NILM_Energy-Disaggregation" target="_blank" rel="noopener">View code on GitHub</a><a class="btn btn-ghost" href="https://arxiv.org/abs/2601.01616" target="_blank" rel="noopener">Read the paper</a></div>
+      </div>
+    </section>
+
+    <div class="container p-layout">
+      <nav class="toc" aria-label="On this page"><p>On this page</p><a href="#overview">Overview</a><a href="#problem">Problem statement</a><a href="#objectives">Engineering objectives</a><a href="#architecture">System architecture</a><a href="#methodology">Methodology</a><a href="#hardware-software">Hardware and software</a><a href="#photos">Implementation photographs</a><a href="#results">Results</a><a href="#metrics">Performance metrics</a><a href="#findings">Key findings</a><a href="#links">Links</a></nav>
+      <article class="p-body">
+<section class="p-section" id="overview"><h2>Overview</h2><p>Textile factories run many identical motor-driven machines, but energy is usually metered for the whole floor. Installing a meter on every machine is expensive. NILM takes another route: measure the total supply once, then use a model to work out how much power each machine draws.</p><p>Our team built the full pipeline: voltage and current sensing hardware, wireless data logging to the cloud, a custom dataset, a fine-tuned MATNILM model and a live dashboard in the Blynk app. I led the project and was responsible for planning, simulation, data collection, the hardware setup, model fine-tuning and code.</p></section>
+<section class="p-section" id="problem"><h2>Problem statement</h2><p>Bangladesh's textile industry uses a lot of energy and often relies on outdated monitoring. To find waste, managers need machine-level data, not just a monthly total. The hard part is that cutting machines are driven by <strong>identical induction motors</strong>, so their electrical signatures look almost the same, which makes disaggregation much harder than for the varied appliances in typical home datasets.</p></section>
+<section class="p-section" id="objectives"><h2>Engineering objectives</h2><ul class="dash"><li>Build low-cost hardware that measures voltage, current and power on the main line and on each load line.</li><li>Collect a new, labelled dataset from identical induction motors under many on/off combinations.</li><li>Adapt and fine-tune the MATNILM deep-learning model to estimate each load's power from the main-line measurements.</li><li>Deploy the model for real-time monitoring with remote access on mobile and web.</li></ul></section>
+<section class="p-section" id="architecture"><h2>System architecture</h2><p>Five voltage and current sensor pairs measure the main line and four load lines (L1–L4). An Arduino Mega 2560 digitizes the signals and computes voltage, current and power, shows them on a 20×4 LCD, and passes them to an ESP8266 that sends the data over Wi-Fi to Google Sheets. Google Colab trains and runs the model, and results are pushed to the Blynk app.</p><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/nilm/system-overview.png" alt="Fig. 1: System overview from sensing to user interface" loading="lazy"><figcaption>Fig. 1: System overview from sensing to user interface</figcaption></figure><figure class="fig"><img src="../assets/img/projects/nilm/data-flow.png" alt="Fig. 2: Data flow for training and real-time deployment" loading="lazy"><figcaption>Fig. 2: Data flow for training and real-time deployment</figcaption></figure></div></section>
+<section class="p-section" id="methodology"><h2>Methodology</h2><ol class="steps"><li><strong>Hardware build.</strong> Three identical 50 W induction motors (L1–L3, representing cutting machines) and two 15 W bulbs in series (L4, auxiliary lighting) were wired to a test board with a sensor pair on each line and on the main supply.</li><li><strong>Data collection.</strong> Over 15 days in the lab, 16 load-state combinations were tested manually. Samples were logged about every 5 seconds on average, giving 180,631 samples of main and per-line voltage, current and power.</li><li><strong>Preparation.</strong> Data was normalized and split by time (not shuffled): 81.0% training (about 90 h), 7.6% validation and 11.4% testing (about 25 h).</li><li><strong>Model.</strong> MATNILM, originally trained on the REDD and UK-DALE home datasets, was adapted to take main power, voltage and current as inputs and output the power of each of the four lines. Training used batch size 32, learning rate 0.001, hidden size 64, dropout 0.1 and sequence length 864, for 5 epochs with data augmentation.</li><li><strong>Real-time deployment.</strong> New readings arrive in Google Sheets; an Apps Script passes them to the Python model in Colab, and predicted per-line power is written back and sent to Blynk virtual pins for live display.</li></ol></section>
+<section class="p-section" id="hardware-software"><h2>Hardware and software</h2><div class="hw-grid"><div><h3>Hardware</h3><ul class="dash"><li>ZMPT101B voltage sensors and ZMCT103C current sensors (5 pairs)</li><li>Arduino Mega 2560</li><li>ESP8266 Wi-Fi module</li><li>20×4 LCD</li><li>3 × identical 50 W induction motors, 2 × 15 W bulbs</li></ul></div><div><h3>Software &amp; tools</h3><ul class="dash"><li>Python, TensorFlow/Keras, NumPy, Pandas, scikit-learn</li><li>MATNILM model (adapted from jxiong22/MATNilm)</li><li>Google Colab, Google Sheets, Google Apps Script</li><li>Blynk IoT platform</li></ul></div></div></section>
+<section class="p-section" id="photos"><h2>Implementation photographs</h2><figure class="fig"><img src="../assets/img/projects/nilm/hardware.jpg" alt="Hardware test board with sensors, three induction motors and two bulbs" loading="lazy" style="max-width:640px"><figcaption>Test board: sensors, relays, three induction motors and bulbs</figcaption></figure><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/nilm/blynk-app.png" alt="Live dashboard in the Blynk mobile app" loading="lazy" style="max-width:260px"><figcaption>Live dashboard in the Blynk mobile app</figcaption></figure><figure class="fig"><img src="../assets/img/projects/nilm/sheets-dashboard.jpg" alt="Predicted power per load, plotted from Google Sheets" loading="lazy"><figcaption>Predicted power per load, plotted from Google Sheets</figcaption></figure></div></section>
+<section class="p-section" id="results"><h2>Results</h2><p>On the offline test set the model tracked total energy reasonably well and performed best when one machine was running. When two or more identical motors ran at the same time, their overlapping signatures caused energy to be assigned to the wrong machine.</p><figure class="fig"><img src="../assets/img/projects/nilm/actual-vs-predicted.png" alt="Actual (blue) vs predicted (orange) power for loads L1–L4" loading="lazy" style="max-width:760px"><figcaption>Actual (blue) vs predicted (orange) power for loads L1–L4</figcaption></figure><div class="fig-row"><figure class="fig"><img src="../assets/img/projects/nilm/metrics-by-machines-on.png" alt="Error and F1 score by number of machines running" loading="lazy"><figcaption>Error and F1 score by number of machines running</figcaption></figure><figure class="fig"><img src="../assets/img/projects/nilm/metrics-by-state.png" alt="Error and F1 score by machine on/off state" loading="lazy"><figcaption>Error and F1 score by machine on/off state</figcaption></figure></div><figure class="fig"><img src="../assets/img/projects/nilm/dataset-signals.png" alt="Recorded signals: main voltage, current and power, and per-line power" loading="lazy" style="max-width:420px"><figcaption>Recorded signals: main voltage, current and power, and per-line power</figcaption></figure></section>
+<section class="p-section" id="metrics"><h2>Performance metrics</h2><p>Real-time deployment results (averaged over the four loads), as reported in the paper and on my CV:</p><div class="metrics"><div class="metric"><div class="num">0.82</div><div class="lbl">F1 score</div></div><div class="metric"><div class="num">13.43 W</div><div class="lbl">Mean absolute error (MAE)</div></div><div class="metric"><div class="num">0.59</div><div class="lbl">Normalized disaggregation error (NDE)</div></div><div class="metric"><div class="num">180,631</div><div class="lbl">Samples in the custom dataset</div></div></div><div class="table-wrap"><table><thead><tr><th class="">Setting</th><th class="">Metric</th><th class="num">M1</th><th class="num">M2</th><th class="num">M3</th><th class="num">M4</th><th class="num">Average</th></tr></thead><tbody><tr><td class="">Offline test</td><td class="">MAE (W)</td><td class="num">8.79</td><td class="num">9.83</td><td class="num">12.68</td><td class="num">6.20</td><td class="num">9.38</td></tr><tr><td class="">Offline test</td><td class="">F1</td><td class="num">0.79</td><td class="num">0.79</td><td class="num">0.68</td><td class="num">0.66</td><td class="num">0.73</td></tr><tr><td class="">Offline test</td><td class="">NDE</td><td class="num">0.63</td><td class="num">0.86</td><td class="num">0.73</td><td class="num">0.76</td><td class="num">0.75</td></tr><tr><td class="">Real-time</td><td class="">MAE (W)</td><td class="num">6.93</td><td class="num">25.51</td><td class="num">10.55</td><td class="num">10.74</td><td class="num">13.43</td></tr><tr><td class="">Real-time</td><td class="">F1</td><td class="num">0.87</td><td class="num">0.82</td><td class="num">0.90</td><td class="num">0.69</td><td class="num">0.82</td></tr><tr><td class="">Real-time</td><td class="">NDE</td><td class="num">0.47</td><td class="num">0.68</td><td class="num">0.51</td><td class="num">0.70</td><td class="num">0.59</td></tr></tbody></table></div></section>
+<section class="p-section" id="findings"><h2>Key findings</h2><ul class="dash"><li>Aggregate energy was tracked reasonably well, but per-machine disaggregation was difficult when identical motors ran together.</li><li>Overlapping on-states of identical motors were the main source of error; L2 showed the largest mismatch during spikes and transients.</li><li>After deployment, MAE rose (mainly for M2) while average F1 and NDE improved.</li><li>The low sampling rate (about one sample every 5 s), noisy sensor readings and a small dataset limited accuracy.</li><li>Next steps: higher-frequency sampling, longer and more varied industrial datasets, architectures designed for identical loads, and hybrid transient/steady-state NILM.</li></ul></section>
+<section class="p-section" id="links"><h2>Links</h2><ul class="dash"><li><a href="https://github.com/Istiauk/FYDP_NILM_Energy-Disaggregation" target="_blank" rel="noopener">GitHub repository</a> (code, dataset and figures)</li><li><a href="https://arxiv.org/abs/2601.01616" target="_blank" rel="noopener">arXiv:2601.01616</a> · <a href="https://doi.org/10.48550/arXiv.2601.01616" target="_blank" rel="noopener">doi:10.48550/arXiv.2601.01616</a></li><li>Model based on <a href="https://github.com/jxiong22/MATNilm" target="_blank" rel="noopener">MATNILM by jxiong22</a>, modified for this dataset and deployment</li></ul></section>
+
+        <nav class="p-nav" aria-label="More projects"><a class="next" href="wind-prediction.html"><span>Next project</span><strong>Wind speed & direction prediction</strong></a></nav>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span id="year">2026</span> Md Istiauk Hossain Rifat</span>
+      <span><a href="../index.html#projects">All projects</a> · <a href="../index.html#contact">Contact</a></span>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>
